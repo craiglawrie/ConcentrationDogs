@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Concentration Dogs</title>
+</head>
+<body>
+    <h1>Concentration Dogs</h1>
+
+    <div id="container">
+        <div id="header">
+            <div class="header-item">
+
+            </div>
+            <div class="header-item">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td><input type="number" id="unique-count" value=10 min=1 max=26 oninput="recalcNumCards()"></td>
+                        <td><label># of unique images</span></td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td><input type="number" id="duplicate-count" step=2 min=2 max=10 value=2 oninput="recalcNumCards()" onchange="checkEven()"></td>
+                        <td><label># of duplicates</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span id="number-of-cards">20</span></td>
+                        <td><label># of total cards</label></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <button onclick="startGame()">New Game</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="game-board">
+            
+        </div>
+    </div>
+    
+    <template id="card-template">
+        <figure class="flip-card">
+            <div class="card" onclick="flipCard(this)">
+                <div class="front"></div>
+                <div class="back"></div>
+            </div>
+        </figure>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
