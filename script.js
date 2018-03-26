@@ -87,18 +87,50 @@ function clearGameBoard() {
 }
 
 function flipCard(card) {
-    if (card.style.transform) {
-        card.style.removeProperty("transform");
-    }
-    else {
-        card.style.transform = "rotatey(180deg) translateX(-8%)";
-    }
+    card.classList.toggle("flipped");
 }
 
 function flipCardUp(card) {
-    card.style.transform = "rotatey(180deg) translateX(-8%)";
+    card.classList.add("flipped");
 }
 
 function flipCardDown(card) {
-    card.style.removeProperty("transform");
+    card.classList.remove("flipped");
+}
+
+let firstCard = null;
+let secondCard = null;
+function processAttempt(card) {
+    if (firstCard === null) {
+        firstCard = card;
+        flipCardUp(firstCard);
+    }
+    else if (secondCard === null) {
+        if (firstCard === card) {
+            return;
+        }
+        secondCard = card;
+        flipCardUp(secondCard);
+
+        if (firstCard.querySelector(".front").style.backgroundImage === secondCard.querySelector(".front").style.backgroundImage) {
+            setTimeout(function() {
+                firstCard.classList.add("removed");
+                secondCard.classList.add("removed");
+                endOfTurnCardsDown();
+            }, 1000);
+        }
+        else {
+            setTimeout(function() {
+                endOfTurnCardsDown();
+            }, 1000);
+        }
+
+    }
+}
+
+function endOfTurnCardsDown() {
+    firstCard.classList.remove("flipped");
+    secondCard.classList.remove("flipped");
+    firstCard = null;
+    secondCard = null;
 }

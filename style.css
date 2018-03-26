@@ -73,12 +73,6 @@ td[colspan="3"] {
     perspective: 50rem;
 }
 
-/*
-.flip-card:hover .card {
-    transform: rotateY(180deg) translateX(-8%);
-}
-*/
-
 div.card {
     display: inline-block;
     width: 100%;
@@ -113,4 +107,13 @@ div.card .back {
 
 div.card .front {
     transform: rotateY(180deg);
+}
+
+
+.flipped {
+    transform: rotateY(180deg) translateX(-8%);
+}
+
+.removed {
+    transform: rotateY(90deg) translateX(-4%);
 }
